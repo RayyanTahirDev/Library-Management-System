@@ -61,12 +61,71 @@ int main(){
 			book[i].display();
 		}	
 	
-	}
-	
-    
+	 break;
+            
+	case 3:
+        
+    if (numofbooks == 0) {
+        cout << "No books in the library to search." << endl;
+    } else {
+        string searchName;
+        cout << "Enter the name of the book to search: ";
+        cin.ignore(); // Clear the input buffer
+        getline(cin, searchName);
 
+        for (int i = 0; i < numofbooks; i++) {
+            if (book[i].name == searchName) {
+                cout << "Book found:" << endl;
+                book[i].display();
+            
+            }
+            else{
+            	cout<<"Book not found"<<endl;
+			}
+      	  }
 
-}
+    }
+    break;
+
+                
+
+            case 4:
+            	  if (numofbooks == 0) {
+        cout << "No books in the library to remove." << endl;
+    } else {
+        string removeName;
+        cout << "Enter the name of the book to remove: ";
+        cin.ignore(); // Clear the input buffer
+        getline(cin, removeName);
+
+        bool bookRemoved = false; // Flag to track whether the book was removed
+        for (int i = 0; i < numofbooks; i++) {
+            if (book[i].name == removeName) {
+                // Shift books in the array to fill the gap left by the removed book
+                for (int j = i; j < numofbooks - 1; j++) {
+                    book[j] = book[j + 1];
+                }
+                numofbooks--;
+                bookRemoved = true;
+                cout << "Book removed successfully." << endl;
+                break; // Exit the loop since the book is found and removed
+            }
+        }
+
+        if (!bookRemoved) {
+            cout << "Book not found in the library." << endl;
+        }
+    }
+    break;
+
+            case 5:
+                return 0;
+            default:
+                cout << "Invalid option. Please try again." << endl;
+                break;
+        }
+    }
+
 
 
 
